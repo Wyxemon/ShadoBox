@@ -1,6 +1,6 @@
 # Main code
 
-start="""
+menu_icon="""
 
 ██╗░░██╗░█████╗░░█████╗░██╗░░██╗██╗███╗░░██╗░██████╗░░░░░░░████████╗░█████╗░░█████╗░██╗░░░░░
 ██║░░██║██╔══██╗██╔══██╗██║░██╔╝██║████╗░██║██╔════╝░░░░░░░╚══██╔══╝██╔══██╗██╔══██╗██║░░░░░
@@ -12,6 +12,20 @@ start="""
 
 # print( las funciones del programa )
 
-print(start)
+print(menu_icon)
+print("Hello! How can I help you? 😊")
 
-input("User > ")
+while True:
+    user = input("User > ")  # Input para usuarios
+    print(user)
+    
+    if user == "exit":
+        exit()  # Salir del programa
+    elif user == "help":
+        print("""Available commands: help, exit, greet""")  # Help
+    else:
+        print(f"Unknown command: {user}. Type 'help' for available commands.")
+
+    
+# FUNCIONES:
+# Aqui crear las funciones necesarias
