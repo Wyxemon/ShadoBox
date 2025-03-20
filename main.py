@@ -1,47 +1,44 @@
-# Main code
+import secrets
+import string
 
-menu_icon="""
-
+menu_icon = """
 ██╗░░██╗░█████╗░░█████╗░██╗░░██╗██╗███╗░░██╗░██████╗░░░░░░░████████╗░█████╗░░█████╗░██╗░░░░░
 ██║░░██║██╔══██╗██╔══██╗██║░██╔╝██║████╗░██║██╔════╝░░░░░░░╚══██╔══╝██╔══██╗██╔══██╗██║░░░░░
 ███████║███████║██║░░╚═╝█████═╝░██║██╔██╗██║██║░░██╗░█████╗░░░██║░░░██║░░██║██║░░██║██║░░░░░
 ██╔══██║██╔══██║██║░░██╗██╔═██╗░██║██║╚████║██║░░╚██╗╚════╝░░░██║░░░██║░░██║██║░░██║██║░░░░░
-██║░░██║██║░░██║╚█████╔╝██║░╚██╗██║██║░╚███║╚██████╔╝░░░░░░░░░██║░░░╚█████╔╝╚█████╔╝███████╗
-╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚═╝╚═╝░░╚══╝░╚═════╝░░░░░░░░░░╚═╝░░░░╚════╝░░╚════╝░╚══════╝"
+██║░░██║██║░░██║╚█████╔╝██║░╚██╗██║██║░░███║╚██████╔╝░░░░░░░░░██║░░░╚█████╔╝╚█████╔╝███████╗
+╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚═╝╚═╝░░╚══╝░╚═════╝░░░░░░░░░░╚═╝░░░░╚════╝░░╚════╝░╚══════╝
 """
 
-# print( las funciones del programa )
+def menu():
+    print("\n--- MENÚ ---")
+    print("1. Generar contraseña segura")
+    print("2. Mostrar este menú nuevamente")
+    print("3. Salir")
 
-import secrets
-import string
-
-print(menu_icon)
-print("Hello! How can I help you? 😊")
-
-while True:
-    user = input("User > ")  # Input para usuarios
-    print(user)
-    
-    if user == "exit":
-        exit()  # Salir del programa
-    elif user == "help":
-        print("""Available commands: help, exit, greet""")  # Help
-    else:
-        print(f"Unknown command: {user}. Type 'help' for available commands.")
-
-    
-# FUNCIONES:
-# Aqui crear las funciones necesarias
-
-# def main:
-
-def contraseñas_seguras():
-    def generar_contraseña(longitud=16):
+def generar_contraseña(longitud=16):
     caracteres = string.ascii_letters + string.digits + string.punctuation
     contraseña = ''.join(secrets.choice(caracteres) for _ in range(longitud))
     return contraseña
 
-# Generar una contraseña segura de 16 caracteres
-    contraseña_segura = generar_contraseña()
-    print("Contraseña segura generada:", contraseña_segura)
-    contraseñas_seguras()
+# Mostrar el menú al inicio
+print(menu_icon)
+menu()
+
+while True:
+    user = input("\nUser > ").strip().lower()  # Limpia espacios y normaliza entrada
+
+    match user:
+        case "exit" | "3":
+            print("Saliendo del programa... ¡Hasta luego! 😊")
+            break
+        
+        case "menu" | "2":
+            menu()
+
+        case "generar contraseña" | "1":
+            contraseña = generar_contraseña()
+            print(f"Contraseña segura generada: {contraseña}")
+
+        case _:
+            print("Opción no reconocida. Escribe 'menu' para ver las opciones.")
