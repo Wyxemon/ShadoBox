@@ -29,3 +29,5 @@ while True:
     
 # FUNCIONES:
 # Aqui crear las funciones necesarias
+
+# def main:
