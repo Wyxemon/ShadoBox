@@ -2,6 +2,7 @@ import string
 import os
 import secrets
 import string
+import subprocess
 
 menu_icon = """
 ██╗░░██╗░█████╗░░█████╗░██╗░░██╗██╗███╗░░██╗░██████╗░░░░░░░████████╗░█████╗░░███i██╗░██╗░░░░░
@@ -61,10 +62,3 @@ while True:
 
     else:
         print("Unrecognized option. Type 'menu' to see the options.")
-                                                                                                                
-
-                                                                                                                                                                                                                                                                                                                                                                  8,49          All
-                                                                                                                  
-                                                                                                                                                                                                                                                                                                                                                                                                                        
-                                                                                                                                                                                                         
-                                                                                                                                                                                                                                                                                                                                                                                   56,82-81      All
