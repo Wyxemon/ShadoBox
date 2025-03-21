@@ -14,10 +14,10 @@ menu_icon = """
 
 def menu():
     print("\n--- MENÚ ---")
-    print("1. Generar contraseña segura")
-    print("2. OSINT: encontrar usuarios con Sherlock (solo para Linux)")
-    print("3. HACKING WIFI con wifite (WPS, WPA, WPA2, handshake...)")
-    print("4. Salir")
+    print("1. GENERATE SAFE PASSWORD")
+    print("2. OSINT: SEARCH USERNAMES WITH SHERLOCK")
+    print("3. HACKING WIFI PASSWORD WITH WIFITE WPS, WPA, WPA2, handshake... ([!] Warning you need a wifi adapter)")
+    print("4. EXIT")
 
 def generar_contraseña(longitud=16):
     caracteres = string.ascii_letters + string.digits + string.punctuation
@@ -32,39 +32,36 @@ while True:
     user = input("\nUser > ").strip().lower()  # Limpia espacios y normaliza entrada
 
     if user in ["exit", "4"]:
-        print("Saliendo del programa... ¡Hasta luego! 😊")
+        print("Leaving the program... ¡Goodbye! 😊")
         break
 
     elif user in ["1", "generar contraseña"]:
         contraseña = generar_contraseña()
-        print(f"Contraseña segura generada: {contraseña}")
+        print(f"Safe password created: {contraseña}")
 
     elif user in ["2", "menu"]:
         if not os.path.exists("sherlock/sherlock.py"):
-            print("\n[!] Sherlock no está instalado, instalando...\n")
+            print("\n[!] Sherlock is not installed, installing...\n")
             subprocess.run(("sudo", "apt", "install", "git"))
             subprocess.run(["git", "clone", "https://github.com/sherlock-project/sherlock"])
             subprocess.run(["pip", "install", "-r", "sherlock/requirements.txt"])
         else:
-            print("[+] Sherlock ya está instalado")
+            print("[+] Sherlock is already installed")
 
         os.system('clear')
         username = input("\n[+] Target username: ")
         subprocess.run(["sherlock", username])
     elif user in ["3", "menu"]:
         if not os.path.exists("/usr/bin/wifite"):
-            print("\n[!] Wifte no esta instalado, instalando...")
+            print("\n[!] Wifte is not installed, installing...")
             subprocess.run(("sudo", "apt", "install", "wifite"))
             os.system('clear')
             os.system('sudo su')
             subprocess.run(("wifite"))
 
     else:
-        print("Opción no reconocida. Escribe 'menu' para ver las opciones.")
-                                                                                                                                                                                           31,16         Bot
-
-                                                                                                                           
-                                                                                                                                                                                                            
+        print("Unrecognized option. Type 'menu' to see the options.")
+                                                                                                                
 
                                                                                                                                                                                                                                                                                                                                                                   8,49          All
                                                                                                                   
