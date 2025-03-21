@@ -1,11 +1,8 @@
-#!/usr/bin/env python3
-
-import subprocess
+import string
 import os
 import secrets
 import string
 
-subprocess.run(("sudo", "apt", "install", "git"))
 menu_icon = """
 ██╗░░██╗░█████╗░░█████╗░██╗░░██╗██╗███╗░░██╗░██████╗░░░░░░░████████╗░█████╗░░███i██╗░██╗░░░░░
 ██║░░██║██╔══██╗██╔══██╗██║░██╔╝██║████╗░██║██╔════╝░░░░░░░╚══██╔══╝██╔══██╗██╔══██╗██║░░░░░
@@ -19,7 +16,8 @@ def menu():
     print("\n--- MENÚ ---")
     print("1. Generar contraseña segura")
     print("2. OSINT: encontrar usuarios con Sherlock (solo para Linux)")
-    print("3. Salir")
+    print("3. HACKING WIFI con wifite (WPS, WPA, WPA2, handshake...)")
+    print("4. Salir")
 
 def generar_contraseña(longitud=16):
     caracteres = string.ascii_letters + string.digits + string.punctuation
@@ -33,7 +31,7 @@ menu()
 while True:
     user = input("\nUser > ").strip().lower()  # Limpia espacios y normaliza entrada
 
-    if user in ["exit", "3"]:
+    if user in ["exit", "4"]:
         print("Saliendo del programa... ¡Hasta luego! 😊")
         break
 
@@ -43,19 +41,29 @@ while True:
 
     elif user in ["2", "menu"]:
         if not os.path.exists("sherlock/sherlock.py"):
-            print("Sherlock no está instalado, instalando...")
+            print("\n[!] Sherlock no está instalado, instalando...\n")
+            subprocess.run(("sudo", "apt", "install", "git"))
             subprocess.run(["git", "clone", "https://github.com/sherlock-project/sherlock"])
             subprocess.run(["pip", "install", "-r", "sherlock/requirements.txt"])
         else:
             print("[+] Sherlock ya está instalado")
 
         os.system('clear')
-        username = input("Target username: ")
+        username = input("\n[+] Target username: ")
         subprocess.run(["sherlock", username])
+    elif user in ["3", "menu"]:
+        if not os.path.exists("/usr/bin/wifite"):
+            print("\n[!] Wifte no esta instalado, instalando...")
+            subprocess.run(("sudo", "apt", "install", "wifite"))
+            os.system('clear')
+            os.system('sudo su')
+            subprocess.run(("wifite"))
 
     else:
         print("Opción no reconocida. Escribe 'menu' para ver las opciones.")
-                                                                                                                                                                                                            
+                                                                                                                                                                                           31,16         Bot
+
+                                                                                                                           
                                                                                                                                                                                                             
 
                                                                                                                                                                                                                                                                                                                                                                   8,49          All
