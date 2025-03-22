@@ -1,9 +1,11 @@
+#!/usr/bin/env python3
+
 import string
 import os
 import secrets
 import string
 import subprocess
-import nmap
+#import nmap
 
 menu_icon = """\n
 ██╗░░██╗░█████╗░░█████╗░██╗░░██╗██╗███╗░░██╗░██████╗░░░░░░░████████╗░█████╗░░███i██╗░██╗░░░░░
@@ -80,9 +82,8 @@ while True:
     elif user in ["2", "Sherlok"]:
         if not os.path.exists("sherlock/sherlock.py"):
             print("\n[!] Sherlock is not installed, installing...\n")
-            subprocess.run(("sudo", "apt", "install", "git"))
-            subprocess.run(["git", "clone", "https://github.com/sherlock-project/sherlock"])
-            subprocess.run(["pip", "install", "-r", "sherlock/requirements.txt"])
+            subprocess.run(("sudo", "apt", "update"))
+            subprocess.run(("sudo", "apt", "install", "sherlock"))
         else:
             print("[+] Sherlock is already installed")
 
@@ -95,8 +96,13 @@ while True:
             print("\n[!] Wifte is not installed, installing...")
             subprocess.run(("sudo", "apt", "install", "wifite"))
             os.system('clear')
-            os.system('sudo su')
-            subprocess.run(("wifite"))
+            print("\n[-] YOU NEED A WIFI ADAPTOR WITH MONITOR OPTION AND INSTALL SOME DEPNDENCE")
+            subprocess.run(("sudo", "apt", "install", "hcxdumptool"))
+            subprocess.run(("sudo", "apt", "install", "hcxtools"))
+            subprocess.run(("sudo", "apt", "install", "aircrack-ng"))
+            subprocess.run(("sudo", "apt", "install", "bully"))
+            os.system("sleep 5")
+            subprocess.run(("sudo", "wifite"))
     
     elif user in ["4", "nmap"]:
         nmap()
