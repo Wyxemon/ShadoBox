@@ -4,10 +4,10 @@ import string
 import os
 import secrets
 import string
-import subprocess
-#import nmap
+from subprocess import run
+# import nmap
 
-menu_icon = """\n
+_menu_icon = """\n
 ██╗░░██╗░█████╗░░█████╗░██╗░░██╗██╗███╗░░██╗░██████╗░░░░░░░████████╗░█████╗░░███i██╗░██╗░░░░░
 ██║░░██║██╔══██╗██╔══██╗██║░██╔╝██║████╗░██║██╔════╝░░░░░░░╚══██╔══╝██╔══██╗██╔══██╗██║░░░░░
 ███████║███████║██║░░╚═╝█████═╝░██║██╔██╗██║██║░░██╗░█████╗░░░██║░░░██║░░██║██║░░██║██║░░░░░
@@ -15,6 +15,8 @@ menu_icon = """\n
 ██║░░██║██║░░██║╚█████╔╝██║░╚██╗██║██║░░███║╚██████╔╝░░░░░░░░░██║░░░╚█████╔╝╚█████╔╝███████╗
 ╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚═╝╚═╝░░╚══╝░╚═════╝░░░░░░░░░░╚═╝░░░░╚════╝░░╚════╝░╚══════╝
 """
+
+# * FUNCIONES
 
 def menu():
     print("\n--- MENÚ ---")
@@ -32,40 +34,43 @@ def generar_contraseña(longitud=16):
 
 def nmap():
     try:
-        subprocess.run(("python", "--version"), check=True)
+        run(("python", "--version"), check=True)
 
     except:
         one = input("You don't have nmap installed. Do you want to update your system before the installation? (Y/n): ")
 
         if one.lower() in ["y", "yes"]:
-            subprocess.run(("sudo", "apt", "update"))
-            subprocess.run(("sudo", "apt", "upgrade"))
+            run(("sudo", "apt", "update"))
+            run(("sudo", "apt", "upgrade"))
         else:
             print("Skipping system update...")
 
-        subprocess.run(("sudo", "apt", "install", "nmap"))
+        run(("sudo", "apt", "install", "nmap"))
         print("Installing nmap...\n")
         print("Nmap is installed in your system now.")
         
     try:
-        subprocess.run(("pip", "--version"), check=True)
+        run(("pip", "--version"), check=True)
 
     except:
         one = input("You don't have pip installed. Do you want to update your system before the installation? (Y/n): ")
 
         if one.lower() in ["y", "yes"]:
-            subprocess.run(("sudo", "apt", "update"))
-            subprocess.run(("sudo", "apt", "upgrade"))
+            run(("sudo", "apt", "update"))
+            run(("sudo", "apt", "upgrade"))
             
         else:
             print("Skipping system update...")
 
-        subprocess.run(("sudo", "apt", "install", "pip"))
+        run(("sudo", "apt", "install", "pip"))
         print("Installing pip...\n")
         print("Pip is installed in your system now.")
-        
+
+
+# * USUARIO
+
 # Mostrar el menú al inicio
-print(menu_icon)
+print(_menu_icon)
 menu()
 
 while True:
@@ -82,30 +87,36 @@ while True:
     elif user in ["2", "Sherlok"]:
         if not os.path.exists("sherlock/sherlock.py"):
             print("\n[!] Sherlock is not installed, installing...\n")
-            subprocess.run(("sudo", "apt", "update"))
-            subprocess.run(("sudo", "apt", "install", "sherlock"))
+            run(("sudo", "apt", "update"))
+            run(("sudo", "apt", "install", "sherlock"))
         else:
             print("[+] Sherlock is already installed")
 
         os.system('clear')
         username = input("\n[+] Target username: ")
-        subprocess.run(["sherlock", username])
+        run(["sherlock", username])
         
     elif user in ["3", "Wifite"]:
         if not os.path.exists("/usr/bin/wifite"):
             print("\n[!] Wifte is not installed, installing...")
-            subprocess.run(("sudo", "apt", "install", "wifite"))
+            run(("sudo", "apt", "install", "wifite"))
             os.system('clear')
             print("\n[-] YOU NEED A WIFI ADAPTOR WITH MONITOR OPTION AND INSTALL SOME DEPNDENCE")
-            subprocess.run(("sudo", "apt", "install", "hcxdumptool"))
-            subprocess.run(("sudo", "apt", "install", "hcxtools"))
-            subprocess.run(("sudo", "apt", "install", "aircrack-ng"))
-            subprocess.run(("sudo", "apt", "install", "bully"))
+            run(("sudo", "apt", "install", "hcxdumptool"))
+            run(("sudo", "apt", "install", "hcxtools"))
+            run(("sudo", "apt", "install", "aircrack-ng"))
+            run(("sudo", "apt", "install", "bully"))
             os.system("sleep 5")
-            subprocess.run(("sudo", "wifite"))
+            run(("sudo", "wifite"))
     
     elif user in ["4", "nmap"]:
         nmap()
+
+    elif user in ["menu"]:
+        menu()
+
+    elif user in ["clear"]:
+        run("clear")
 
     else:
         print("Unrecognized option. Type 'menu' to see the options.")
