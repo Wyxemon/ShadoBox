@@ -4,6 +4,8 @@ SwadoBox is a comprehensive cybersecurity suite designed for pentesters, securit
 
 ![Image](image.png)
 
+## Only for LINUX
+
 ## Features
 
 - **WiFi Hacking:** Attacks on WiFi networks, security auditing, and packet capture.
