@@ -122,9 +122,8 @@ while True:
     elif user in ["menu"]:
         menu()
 
-    elif user in ["clear", "cls"]:
-        run("cls" if os.name == "nt" else "clear", shell=True)
-        print(_menu_icon)
+    elif user in ["clear"]:
+        run("clear")
 
     else:
         print("Unrecognized option. Type 'menu' to see the options.")
