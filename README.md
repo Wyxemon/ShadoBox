@@ -2,6 +2,8 @@
 
 MultiHackTool is a powerful hacking and cybersecurity tool written in Python. Designed for pentesters, security researchers, and ethical hacking enthusiasts, this suite includes a variety of modules for security testing, OSINT, brute-force attacks, and much more.
 
+![Launcher Image](image.png)
+
 ## Main Features
 
 WiFi Hacking: Attacks on WiFi networks, security auditing, and packet capture.
