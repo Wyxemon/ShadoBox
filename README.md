@@ -1,4 +1,4 @@
-# Welcome to SwadoBox
+# Welcome to ShadoBox
 
 SwadoBox is a comprehensive cybersecurity suite designed for pentesters, security researchers, and ethical hackers. Written in Python, it includes a variety of modules for security testing, OSINT, brute-force attacks, and more.
 
