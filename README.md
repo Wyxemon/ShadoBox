@@ -4,7 +4,7 @@ SwadoBox is a comprehensive cybersecurity suite designed for pentesters, securit
 
 ![Image](image.png)
 
-## Only for LINUX
+## Only for LINUX ( Recommended: * Kali Linux *)
 
 ## Features
 
