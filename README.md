@@ -29,11 +29,6 @@ Follow these steps to install and run MinePy-Launcher on your local machine:
    cd ShadoBox
    ```
 
-3. Install the dependencies:  
-   ```bash
-   pip install -r requirements.txt
-   ```
-
 4. Run the application:  
    ```bash
    python3 main.py
