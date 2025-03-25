@@ -15,6 +15,30 @@ SwadoBox is a comprehensive cybersecurity suite designed for pentesters, securit
 - **Malware Analysis and Creation:** Study malware and generate custom payloads.
 - **OSINT Techniques:** Collect information from open sources.
 
+## How to Run
+
+Follow these steps to install and run MinePy-Launcher on your local machine:
+
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/Wyxemon/ShadoBox.git
+   ```
+
+2. Navigate to the project directory:  
+   ```bash
+   cd ShadoBox
+   ```
+
+3. Install the dependencies:  
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Run the application:  
+   ```bash
+   python3 main.py
+   ```
+
 ## Warning
 
 This tool is for educational purposes and authorized security testing only. Misuse is illegal and punishable by law.
