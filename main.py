@@ -4,6 +4,7 @@ import string
 import os
 import secrets
 import string
+import shutil
 from subprocess import run, CalledProcessError
 # import nmap
 
@@ -29,7 +30,7 @@ def menu():
     print("1. GENERATE SAFE PASSWORD")
     print("2. OSINT: SEARCH USERNAMES WITH SHERLOCK")
     print("3. HACKING WIFI PASSWORD WITH WIFITE WPS, WPA, WPA2, handshake... ([!] Warning you need a wifi adapter)")
-    print("4. PORT SCANNER WITH NMAP")
+    print("4. PORT SCANNER")
     print("5. HELP")
     print("6. EXIT")
 
@@ -40,22 +41,34 @@ def generar_contraseña(longitud=16):
 
 def nmap():
     try:
-        run(("nmap", "--version"), check=True)
+        shutil.which("nmap")
         print("You have nmap in your system")
 
     except CalledProcessError:
         one = input("You don't have nmap installed. Do you want to update your system before the installation? (Y/n): ")
 
         if one.lower() in ["y", "yes"]:
-            run(("sudo", "apt", "update"))
-            run(("sudo", "apt", "upgrade"))
+                try:
+                    run(("sudo", "apt", "update"))
+                    run(("sudo", "apt", "upgrade"))
+                
+                except CalledProcessError:
+                    print("This user isn't in the sudoers list, use other user with Super User permissions")
+                    return
+                
         else:
-            print("Skipping system update...")
+                print("Skipping system update...")
 
-        print("Installing nmap...\n")
-        run(("sudo", "apt", "install", "nmap"))
-        print("Nmap is installed in your system now.")
+        try:
+            
+            print("Installing nmap...\n")
+            run(("sudo", "apt", "install", "nmap"))
+            print("Nmap is installed in your system now.")
     
+        except CalledProcessError:
+                print("This user isn't in the sudoers list, use other user with Super User permissions")
+                
+                
     def menu2():
         os.system("clear")
         print("""\n
@@ -74,7 +87,8 @@ def nmap():
 4. OS and Traceroute Detection Scan
 5. Service Version Detection Scan
 6. Leave NMAP And Return To Menu""")
-
+    
+    menu2()
     two = input("\nYour Election: ")
     
     if two.lower() in ["1", "simple scan"]:
