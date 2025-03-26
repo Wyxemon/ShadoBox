@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
-import string
 import os
-import secrets
-import string
 import shutil
 from subprocess import run, CalledProcessError, DEVNULL
+from password import generar_contraseña
+from osint import HoleHe
+from nmap import nmap, menu, menu_python, menu_linux
 # import nmap
 
 _menu_icon = """\n
@@ -33,20 +33,15 @@ def menu():
     print("4. PORT SCANNER")
     print("5. HELP")
     print("6. EXIT")
+    
 
-def generar_contraseña(longitud=16):
-    caracteres = string.ascii_letters + string.digits + string.punctuation
-    contraseña = ''.join(secrets.choice(caracteres) for _ in range(longitud))
-    return contraseña
 
-def HoleHe():
-    instalar = "HoleHe" #seguir aqui
 
 def nmap():
     try:
         if shutil.which("nmap"):
             print("You have nmap in your system")
-            menu2()
+            menu()
 
     except CalledProcessError:
         one = input("You don't have nmap installed. Do you want to update your system before the installation? (Y/n): ")
@@ -68,13 +63,13 @@ def nmap():
             print("Installing nmap...\n")
             run("sudo", "apt", "install", "nmap", check=True)
             print("Nmap is installed in your system now.")
-            menu2()
+            menu()
             
         except CalledProcessError:
                 print("This user isn't in the sudoers list, use other user with Super User permissions")
         
                 
-    def menu2():
+    def menu():
         os.system("clear")
         print("""\n
 ███╗░░██╗███╗░░░███╗░█████╗░██████╗░
@@ -92,10 +87,10 @@ def nmap():
         two = input("\nUser (nmap) > ")
         
         if two.lower() in ["1", "python nmap"]:
-            menu3()
+            menu_python()
         
         elif two.lower() in ["2", "linux nmap"]:
-            menu4()
+            menu_linux()
             
         elif two.lower() in ["3", "help"]:
             print("""
@@ -106,7 +101,7 @@ Linux NMAP: Using the NMAP of your PATH""")
             return
         
         
-    def menu3():
+    def menu_python():
         os.system("clear")
         print("""\n
 
@@ -136,16 +131,16 @@ Linux NMAP: Using the NMAP of your PATH""")
             host = input("\nPut here the IP of the domain or host to scan: 5")
         
         elif three.lower() in ["6", "leave"]:
-            return menu2
+            return menu
     
         elif three.lower() in ["menu"]:
-            menu3()
+            menu_python()
     
         else:
             print("Unrecognized option. Type 'menu' to see the options.")
         
         
-    def menu4():
+    def menu_linux():
         put_linux = "nmap function" #seguir aqui2
         
 
